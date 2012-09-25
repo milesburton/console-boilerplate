@@ -1,0 +1,36 @@
+import spock.lang.*
+
+
+class QuickSortSpec extends Specification {
+
+    QuickSort sorter
+   // PivotGenerator mockPivotGenerator
+
+    void setup(){
+
+
+        sorter = new QuickSort()
+
+        sorter.pivotGenerator = new PivotGenerator()
+
+      ///  mockPivotGenerator = Mock(PivotGenerator)
+    //    sorter.pivotGenerator = mockPivotGenerator
+    }
+
+    def "should sort from lowest to highest"() {
+
+        given:
+        int[] sortable = [9,7,14,1,5,6]
+        sorter.integers = sortable
+
+        when:
+        sorter.sort(0, sortable.length-1)
+
+        then:
+        sorter.integers == [1,5,6,7,9,14]
+
+      //  and:
+      //  1 * mockPivotGenerator.pivot(sortable) >> 3
+    }
+
+}

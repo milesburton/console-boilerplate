@@ -1,0 +1,54 @@
+class QuickSort {
+
+    PivotGenerator pivotGenerator
+    int[] integers
+
+    void sort(int low, int high) {
+
+        println integers
+        println "${low} and ${high}"
+
+        int lowerBound = low
+        int upperBound = high
+
+        int pivot = pivotGenerator.pivot integers
+
+        while (lowerBound <= upperBound) {
+
+            println integers
+            while (integers[lowerBound] < pivot) {
+                println integers[lowerBound]
+                lowerBound++
+            }
+
+            while (integers[upperBound]  > pivot ){
+                println integers[upperBound]
+                upperBound--
+            }
+
+            if (lowerBound <= upperBound) {
+
+                swap(integers, lowerBound, upperBound)
+                lowerBound++
+                upperBound--
+            }
+        }
+
+        sort(low, upperBound)
+        sort(lowerBound, high)
+    }
+
+    private void swap(int[] integers, int indexA, int indexB) {
+
+        if(indexA < indexB){
+            return
+        }
+
+        int oldIndexA = integers[indexA]
+
+        integers[indexA] = integers[indexB]
+        integers[indexB] = oldIndexA
+    }
+
+
+}
